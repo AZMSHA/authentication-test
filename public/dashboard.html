@@ -35,11 +35,11 @@
       // When the DOM is fully loaded
       document.addEventListener("DOMContentLoaded", (event) => {
         const queryParams = getQueryParams();
-        const email = queryParams["email"];
+        const username = queryParams["username"];
 
-        if (email) {
-          const username = document.getElementById("username");
-          username.textContent = email;
+        if (username) {
+          const usernameDiv = document.getElementById("username");
+          usernameDiv.textContent = email;
           const profilePicture = document.getElementById("profile-picture");
           profilePicture.src = "/assets/images/logo.png";
           profilePicture.className = "transparentBG";

@@ -1,31 +1,37 @@
 const User = require("../model/User");
+const bcrypt = require("bcryptjs");
 
 exports.register = async (req, res, next) => {
   const { username, password } = req.body;
-  if (password.length < 6) {
-    return res.status(400).json({ message: "Password less than 6 characters" });
-  }
+
   try {
-    await User.create({
+    // Hash the password
+    const hash = await bcrypt.hash(password, 10);
+
+    // Create a new user with hashed password
+    const user = await User.create({
       username,
-      password,
-    }).then((user) =>
-      res.status(200).json({
-        message: "User successfully created",
-        user,
-      })
-    );
+      password: hash,
+    });
+
+    // Return success response
+    res.status(200).json({
+      message: "User successfully created",
+      user,
+    });
   } catch (error) {
-    res.status(401).json({
-      message: "User not successful created",
-      error: error.mesage,
+    // Return error response
+    res.status(400).json({
+      message: "User not successfully created",
+      error: error.message,
     });
   }
 };
 
 exports.login = async (req, res, next) => {
   const { username, password } = req.body;
-  // Check if username and password is provided
+
+  // Check if username and password are provided
   if (!username || !password) {
     return res.status(400).json({
       message: "Username or Password not present",
@@ -33,20 +39,32 @@ exports.login = async (req, res, next) => {
   }
 
   try {
-    const user = await User.findOne({ username, password });
+    const user = await User.findOne({ username });
+
+    // If user not found, return error
     if (!user) {
-      res.status(401).json({
+      return res.status(400).json({
         message: "Login not successful",
-        error: "Username or Password incorrect",
+        error: "User not found",
       });
-    } else {
-      res.status(200).json({
+    }
+
+    // Compare given password with hashed password
+    const result = await bcrypt.compare(password, user.password);
+
+    if (result) {
+      // If password is correct, return success
+      return res.status(200).json({
         message: "Login successful",
         user,
       });
+    } else {
+      // If password is incorrect, return error
+      return res.status(400).json({ message: "Password Incorrect" });
     }
   } catch (error) {
-    res.status(400).json({
+    // If any error occurs during the process, return error
+    return res.status(400).json({
       message: "An error occurred",
       error: error.message,
     });
