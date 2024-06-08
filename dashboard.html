@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Portal</title>
+    <meta name="author" content="Hassan Javed" />
+    <link rel="stylesheet" href="styles-dashboard.css" />
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/faa0848be0.js"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // Function to get query parameters
+      function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        const queryParams = {};
+        for (const [key, value] of params.entries()) {
+          queryParams[key] = value;
+        }
+        return queryParams;
+      }
+
+      // When the DOM is fully loaded
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const queryParams = getQueryParams();
+        const email = queryParams["email"];
+
+        if (email) {
+          const username = document.getElementById("username");
+          username.textContent = email;
+          const profilePicture = document.getElementById("profile-picture");
+          profilePicture.src = "./assets/logo.png";
+          profilePicture.className = "transparentBG";
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <body>
+      <nav class="top-navbar">
+        <h1 class="page-title">Chat Portal</h1>
+        <button><i class="fa-solid fa-circle-arrow-down"></i></button>
+      </nav>
+      <nav class="sidebar">
+        <div class="user-profile">
+          <img
+            id="profile-picture"
+            src="./assets/pfp.png"
+            alt="profile picture"
+          /><span id="username">Guest</span>
+        </div>
+        <ul id="side-links"></ul>
+        <div class="version-number"><span>Version:</span> 1.0.0</div>
+      </nav>
+      <main>
+        <h1>DASHBOARD</h1>
+        <ul class="main-links" id="large-links"></ul>
+        <ul class="main-links" id="medium-links"></ul>
+        <div class="quick-access">
+          <h1>QUICK ACCESS</h1>
+          <ul id="small-links"></ul>
+        </div>
+      </main>
+      <script src="script-dashboard.js"></script>
+    </body>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <meta name="author" content="Hassan Javed" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/faa0848be0.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <main>
+      <img class="profile-picture" src="./assets/logo.png" alt="Logo" />
+      <h1>LOG IN</h1>
+      <form action="./dashboard.html" method="get">
+        <div class="form-field">
+          <label for="email"><i class="fa-solid fa-envelope"></i></label
+          ><input
+            placeholder="Enter Your Email Address"
+            id="email"
+            name="email"
+            type="email"
+            required
+          />
+        </div>
+        <div class="form-field">
+          <label for="password"><i class="fa-solid fa-lock"></i></label
+          ><input
+            placeholder="Enter Your Password"
+            name="password"
+            id="password"
+            type="password"
+            minlength="8"
+            required
+          />
+          <i
+            onclick="togglePassword({target:event,passwordInput:'password'})"
+            class="show-icon fa-solid fa-eye"
+          ></i>
+        </div>
+        <div class="form-field row">
+          <input
+            id="remember-me"
+            name="remember-me"
+            value="true"
+            type="checkbox"
+          /><label for="remember-me">Remember Me</label>
+        </div>
+        <div class="form-field submit-button-area">
+          <input class="submit-button" type="submit" value="Login" />
+        </div>
+      </form>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
