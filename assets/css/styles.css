@@ -14,7 +14,7 @@ body {
   justify-content: center;
   flex-direction: column;
   height: 100vh;
-  background-image: url("./assets/bg-image.png");
+  background-image: url("/assets/images/bg-image.png");
   background-size: cover;
   background-position: center;
   accent-color: rgb(var(--color-ter));
@@ -128,6 +128,82 @@ main {
   select {
     max-width: initial;
   }
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgba(var(--color-sec), 0.7);
+  padding: 3.125rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 18rem;
+  gap: 1.25rem;
+}
+
+.profile-picture {
+  max-width: 7.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+form,
+.form-field {
+  width: 100%;
+}
+
+.show-icon {
+  position: absolute;
+  right: 1rem;
+  top: 2.4rem;
+  color: rgb(var(--color-sec));
+  transition: color 250ms ease;
+}
+
+.show-icon:hover {
+  color: rgb(var(--color-ter));
+  cursor: pointer;
+}
+
+.show-icon.active {
+  color: rgb(var(--color-ter));
+}
+
+.form-field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+label {
+  transition: color 250ms ease;
+}
+
+.form-field:focus-within label {
+  color: rgb(var(--color-ter));
+}
+
+.form-field.submit-button-area {
+  justify-content: center;
+  align-items: center;
+}
+
+.submit-button {
+  font-family: var(--font-sec);
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: 0.5rem 2.5rem;
+}
+
+.row {
+  flex-direction: row;
 }
 
 @media (max-width: 280px) {

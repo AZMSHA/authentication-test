@@ -1,0 +1,23 @@
+{
+  "name": "authentication-demo",
+  "version": "1.0.0",
+  "description": "Just to test authentication",
+  "main": "script.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AZMSHA/authentication-test.git"
+  },
+  "author": "Hashir Adnan Hassan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AZMSHA/authentication-test/issues"
+  },
+  "homepage": "https://github.com/AZMSHA/authentication-test#readme",
+  "dependencies": {
+    "mongoose": "^8.4.1"
+  }
+}
