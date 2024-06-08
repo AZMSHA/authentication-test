@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (responseData.user.role === "Basic") {
         window.location.href = "/user.html";
       } else if (responseData.user.role === "admin") {
-        window.location.href = "/dashboard.html";
+        window.location.href = `/dashboard.html?username=${responseData.user.username}`;
       }
     } catch (error) {
       console.error("Error:", error.message);
