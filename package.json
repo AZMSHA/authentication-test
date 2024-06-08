@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/AZMSHA/authentication-test#readme",
   "dependencies": {
-    "mongoose": "^8.4.1"
+    "bcryptjs": "^2.4.3",
+    "express": "^4.19.2",
+    "mongoose": "^8.4.1",
+    "nodemon": "^3.1.3"
   }
 }
